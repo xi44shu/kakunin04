@@ -1,45 +1,30 @@
 <div class='calendarsbox'>
   <div class="calender_header">
     <div class='day-title'>日にち\班</div>
-      <!-- 班数分３回繰り返す -->
-      <% 3.times do |x| %> 
-      <% teamid = 1 + x %>
-        <!-- 午前・午後の2回繰り返す -->
-        <% 2.times do |tz| %> 
-          <% tzid = 2 + tz %>
-          <div class='team-title'>
-                <%= Team.find(teamid).team_name %>班 <%= TimeZone.find(tzid).name %>枠
-          </div>
-        <% end %>
+    <!-- 班数分３回繰り返す -->
+    <% 3.times do |x| %> 
+    <% teamid = 1 + x %>
+      <!-- 午前・午後の2回繰り返す -->
+      <% 2.times do |tz| %> 
+        <% tzid = 2 + tz %>
+        <div class='team-title'>
+              <%= Team.find(teamid).team_name %>班 <%= TimeZone.find(tzid).name %>枠</div>
+          
       <% end %>
+    <% end %>
   </div>
-  <div class='calendars'>
-    <div class='calendar'>
-      <% @week_days.each do |day|%>
-        <div class='day-item'>
-          <div class='date'>
-            <%= day[:month] %>/<%= day[:date] %><br><%= day[:wday] %>
-          </div>
+<div class='calendars'>
+  <div class='calendar'>
+    <% @week_days.each do |day|%>
+      <div class='day-item'>
+        <div class='date'>
+          <%= day[:month] %>/<%= day[:date] %><br><%= day[:wday] %>
         </div>
-      <% end %>
-    </div>
-    <div class='calendar'>
-      <% @week_days.each do |day| %>
-        <div class='item'>
-          <div class='content'>
-            <% @calendar.each do |cal| %>
-            <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == 2%>
-            <div><%= cal.scheduled_date%></div>
-            <div><%= cal.time_zone_id%></div>
-            <div><%= cal.team.team_name%></div>
-            <%end%>
-            <%end%>
-          </div>
-        </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
-</div>
+  </div>
+  </div>
 
   <div class='team-plan'>
     <% 3.times do |x| %> 
