@@ -1,7 +1,7 @@
 <div class='calendarsbox'>
   <div class="calender_header">
     <div class='day-title'>日にち\班</div>
-      <!-- 班数分３回繰り返す -->
+      <!-- 稼働している班数分繰り返す -->
       <% @team.each do |team| %>
         <!-- 午前・午後の2回繰り返す -->
         <% 2.times do |tz| %> 
@@ -22,9 +22,8 @@
         </div>
       <% end %>
     </div>
-      <!-- 班数分３回繰り返す -->
-      <% 3.times do |x| %> 
-      <% teamid = 1 + x %>
+      <!-- 稼働している班数分繰り返す -->
+      <% @team.each do |team| %>
             <!-- １班に付き午前１週間・午後１週間の2回繰り返す -->
             <% 2.times do |tz| %> 
             <% tzid = 2 + tz %>
@@ -33,7 +32,7 @@
         <div class='item'>
           <div class='content'>
             <% @calendar.each do |cal| %>
-            <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == teamid%>
+            <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == team.id%>
             <div><%= link_to "予約詳細", calendar_path(cal.id), class: :nav__btn %></div>
             <div><%= cal.scheduled_date%></div>
             <div><%= cal.time_zone_id%></div>

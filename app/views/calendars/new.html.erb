@@ -2,7 +2,7 @@
 <%= f.label :日付を選択, class: 'lavel' %>
 <%= f.date_field :scheduled_date, class: 'date-select' %>
 <%= f.label :施工班を選択, class: 'lavel' %>
-<%= f.collection_select(:team_id, Team.all, :id, :team_name, {}, {class:"team-select"}) %>
+<%= f.collection_select(:team_id, Team.where(work: '1'), :id, :team_name, {}, {class:"team-select"}) %>
 <%= f.label :時間帯を選択, class: 'lavel' %>
 <%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class:"time_zone-select"}) %>
 
