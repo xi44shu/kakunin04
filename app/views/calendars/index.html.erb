@@ -35,6 +35,7 @@
           <div class='content'>
             <% @calendar.each do |cal| %>
             <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == teamid%>
+            <div><%= link_to "予約詳細", calendar_path(cal.id), class: :nav__btn %></div>
             <div><%= cal.scheduled_date%></div>
             <div><%= cal.time_zone_id%></div>
             <div><%= cal.team.team_name%></div>
@@ -47,25 +48,4 @@
     <% end %>
     <% end %>
   </div>
-</div>
-
-  <div class='team-plan'>
-    <% 3.times do |x| %> 
-      <% teamid = 1 + x %>
-        <% 2.times do |tz| %> 
-        <% tzid = 2 + tz %>
-          <% @calendar.each do |calendar| %>
-          <div class='timezone-plan'>
-            <% if calendar.team_id == teamid && (calendar.time_zone_id == tzid)%>
-            <div class='calendar-date'>
-              <%= calendar.scheduled_date %></div>
-            <div class='time_zone_id'>
-              <%= calendar.time_zone.name %></div>
-              <div class='team_name'>
-                <%= calendar.team.team_name %></div>
-              <% end %>
-          </div>
-          <% end %>
-        <% end %>
-    <% end %>
 </div>

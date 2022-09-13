@@ -1,0 +1,8 @@
+<%= @calendar.scheduled_date %>
+<%= @calendar.time_zone_id %>
+<%= @calendar.team.team_name %>
+<%= link_to "予約を変更", edit_calendar_path(@calendar.id), class: :nav__btn %>
+<%= link_to "内容をコピー", edit_calendar_path(@calendar.id), class: :nav__btn %>
+
+
+<%= link_to "削除", calendar_path(@calendar.id), method: :delete,  class: :nav__btn  %>
