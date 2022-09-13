@@ -23,6 +23,9 @@
         </div>
       <% end %>
     </div>
+      <!-- 班数分３回繰り返す -->
+      <% 3.times do |x| %> 
+      <% teamid = 1 + x %>
             <!-- １班に付き午前１週間・午後１週間の2回繰り返す -->
             <% 2.times do |tz| %> 
             <% tzid = 2 + tz %>
@@ -31,7 +34,7 @@
         <div class='item'>
           <div class='content'>
             <% @calendar.each do |cal| %>
-            <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == 1%>
+            <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == teamid%>
             <div><%= cal.scheduled_date%></div>
             <div><%= cal.time_zone_id%></div>
             <div><%= cal.team.team_name%></div>
@@ -41,6 +44,7 @@
         </div>
       <% end %>
     </div>
+    <% end %>
     <% end %>
   </div>
 </div>
