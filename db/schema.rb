@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_074753) do
     t.integer "time_zone_id", null: false
     t.bigint "team_id", null: false
     t.bigint "user_id", null: false
+    t.integer "size_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_calendars_on_team_id"

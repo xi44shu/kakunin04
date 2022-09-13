@@ -34,8 +34,8 @@
             <% @calendar.each do |cal| %>
             <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == team.id%>
             <div><%= link_to "予約詳細", calendar_path(cal.id), class: :nav__btn %></div>
+            <div><%= Size.find(cal.size_id).name%></div>
             <div><%= cal.scheduled_date%></div>
-            <div><%= cal.time_zone_id%></div>
             <div><%= cal.team.team_name%></div>
             <%end%>
             <%end%>

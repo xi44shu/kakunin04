@@ -5,6 +5,8 @@
 <%= f.collection_select(:team_id, Team.where(work: '1'), :id, :team_name, {}, {class:"team-select"}) %>
 <%= f.label :時間帯を選択, class: 'lavel' %>
 <%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class:"time_zone-select"}) %>
+<%= f.label :サイズを選択, class: 'lavel' %>
+<%= f.collection_select(:size_id, Size.all, :id, :name, {}, {class:"size-select"}) %>
 
 <%= f.submit "登録する" %>
 <% end %>
