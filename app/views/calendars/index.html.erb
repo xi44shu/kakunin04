@@ -2,13 +2,12 @@
   <div class="calender_header">
     <div class='day-title'>日にち\班</div>
       <!-- 班数分３回繰り返す -->
-      <% 3.times do |x| %> 
-      <% teamid = 1 + x %>
+      <% @team.each do |team| %>
         <!-- 午前・午後の2回繰り返す -->
         <% 2.times do |tz| %> 
           <% tzid = 2 + tz %>
           <div class='team-title'>
-                <%= Team.find(teamid).team_name %>班 <%= TimeZone.find(tzid).name %>枠
+                <%= team.team_name %>班 <%= TimeZone.find(tzid).name %>枠
           </div>
         <% end %>
       <% end %>

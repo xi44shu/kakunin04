@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2022_09_13_074753) do
 
   create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "team_name", null: false
+    t.string "affiliation", null: false
+    t.boolean "work", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,7 +1,7 @@
 class CalendarsController < ApplicationController
   def index
     get_week    
-    @team = Team.all
+    @team = Team.where(work: '1')
     @calendar = Calendar.where(scheduled_date: @todays_date..@todays_date + 6)
 
   end
