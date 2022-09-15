@@ -27,23 +27,36 @@
             <!-- １班に付き午前１週間・午後１週間の2回繰り返す -->
             <% 2.times do |tz| %> 
             <% tzid = 2 + tz %>
-      <div class='calendar'>
-      <% @week_days.each do |day| %>
-        <div class='item'>
-          <div class='content'>
-            <% @calendar.each do |cal| %>
-            <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == team.id%>
-            <div><%= link_to "予約詳細", calendar_path(cal.id), class: :nav__btn %></div>
-            <div><%= Size.find(cal.size_id).name%></div>
-            <div><%= cal.scheduled_date%></div>
-            <div><%= cal.team.team_name%></div>
-            <%end%>
-            <%end%>
-          </div>
-        </div>
+              <div class='calendar'>
+                <% @week_days.each do |day| %>
+                  <div class='item'>
+                    <div class='content'>
+                      <% @calendar.each do |cal| %>
+                        <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == team.id%>
+                          <div class="content_header">
+                            <div class="content_detail"><%= link_to "予約詳細", calendar_path(cal.id), class: :nav__btn %></div>
+                            <div class="content_detail"><%= Size.find(cal.size_id).name%></div>
+                          </div>
+                          <div class="content_body">
+                            <div class="content_body_top">
+                              <div class="content_detail">時間:<%= cal.start_time%></div>
+                              <div class="content_detail">事業体:<%= cal.public_utility%></div>
+                            </div>
+                            <div class="content_body_middle">
+                              <div class="content_detail">商社:<%= cal.trading_company%></div>
+                              <div class="content_detail">元請:<%= cal.prime_contractor%></div>
+                            </div>
+                            <div class="content_body_bottom">
+                              <div>内容:<%= cal.detail%></div>
+                            </div>
+                          </div>
+                          <%end%>
+                        <%end%>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+          <% end %>
       <% end %>
-    </div>
-    <% end %>
-    <% end %>
   </div>
 </div>

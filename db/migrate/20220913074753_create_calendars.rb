@@ -6,7 +6,12 @@ class CreateCalendars < ActiveRecord::Migration[6.0]
       t.references :team,            null: false, foreign_key: true
       t.references :user,            null: false, foreign_key: true
       t.integer :size_id,       null: false
-
+      t.string :start_time
+      t.string :trading_company
+      t.string :public_utility
+      t.string :prime_contractor
+      t.string :detail
+      t.string :sales_staff
       t.timestamps
     end
   end

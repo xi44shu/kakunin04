@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 2022_09_13_074753) do
     t.bigint "team_id", null: false
     t.bigint "user_id", null: false
     t.integer "size_id", null: false
+    t.string "start_time"
+    t.string "trading_company"
+    t.string "public_utility"
+    t.string "prime_contractor"
+    t.string "detail"
+    t.string "sales_staff"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_calendars_on_team_id"

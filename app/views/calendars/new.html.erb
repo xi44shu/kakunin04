@@ -1,4 +1,5 @@
 <%= form_with model: @calendar, url: calendars_path, local: true do |f| %>
+<div class="hissu_input">必須項目</div>
 <%= f.label :日付を選択, class: 'lavel' %>
 <%= f.date_field :scheduled_date, class: 'date-select' %>
 <%= f.label :施工班を選択, class: 'lavel' %>
@@ -7,6 +8,18 @@
 <%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class:"time_zone-select"}) %>
 <%= f.label :サイズを選択, class: 'lavel' %>
 <%= f.collection_select(:size_id, Size.all, :id, :name, {}, {class:"size-select"}) %>
-
++<div class="nini_input">任意項目</div>
+<%= f.label :開始時間を入力, class: 'lavel' %>
+<%= f.text_field :start_time, class: 'start_time-input' %>
+<%= f.label :事業体を入力, class: 'lavel' %>
+<%= f.text_field :public_utility, class: 'public_utility-input' %>
+<%= f.label :商社を入力, class: 'lavel' %>
+<%= f.text_field :trading_company, class: 'trading_contractor-input' %>
+<%= f.label :元請業者を入力, class: 'lavel' %>
+<%= f.text_field :prime_contractor, class: 'prime_contractor-input' %>
+<%= f.label :工事内容を入力, class: 'lavel' %>
+<%= f.text_field :detail, class: 'detail-input' %>
+<%= f.label :営業担当を入力, class: 'lavel' %>
+<%= f.text_field :sales_staff, class: 'detail-input' %>
 <%= f.submit "登録する" %>
 <% end %>

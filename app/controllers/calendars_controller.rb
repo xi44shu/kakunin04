@@ -25,7 +25,7 @@ class CalendarsController < ApplicationController
   private
 
   def calendar_params
-    params.require(:calendar).permit(:scheduled_date, :time_zone_id, :team_id, :size_id).merge(user_id: current_user.id)
+    params.require(:calendar).permit(:scheduled_date, :time_zone_id, :team_id, :size_id, :start_time, :trading_company, :public_utility, :prime_contractor, :detail, :sales_staff).merge(user_id: current_user.id)
   end  
 
   def get_week
