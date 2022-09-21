@@ -1,0 +1,48 @@
+<div class='calendarsbox'>
+  <table border="1">
+    <tr>
+      <th>日にち\班</th>
+        <% @teams.each do |team| %>
+            <!-- 午前・午後の2回繰り返す -->
+            <% 2.times do |tz| %> 
+              <% tzid = 2 + tz %>
+              <th><%= team.team_name %>班 <%= TimeZone.find(tzid).name %>枠</th>
+            <% end %>
+          <% end %>
+          </tr>
+    
+    <!-- 日付の表示と1日に付き(1班の午前・午後)を稼働している班数回繰り返す -->
+<!-- 日付登録の分だけ繰り返す -->
+    <% @week_days.each do |day|%>
+    <tr><!-- 日付の表示 -->
+<td><%= day[:month] %>/<%= day[:date] %><br><%= day[:wday] %></td>
+      <!-- 稼働している班数分繰り返す -->
+          <% @teams.each do |team| %>
+            <!-- 第１班の午前午後の表示 -->
+            <!-- 日にちと班と枠が一致していたら表示する -->
+                <% 2.times do |tz| %> 
+                  <% tzid = 2 + tz %>
+                      <% @calendar.each do |cal| %>
+                          <% if day[:scheduled_date] == cal.scheduled_date && cal.time_zone_id == tzid && cal.team_id == team.id%>
+                          <td>
+                            <ul>
+                              
+                            <li> <%= link_to "予約詳細", calendar_path(cal.id), class: :nav__btn %></li>
+                            <li> <%= Size.find(cal.size_id).name%></li>
+                            <li>  時間:<%= cal.start_time%>      </li>
+                            <li>  事業体:<%= cal.public_utility%></li>
+                            <li>  商社:<%= cal.trading_company%> </li>
+                            <li>  元請:<%= cal.prime_contractor%></li>
+                            <li>  内容:<%= cal.detail%>
+                            </ul></td>
+                            <% else %>
+                            <td></td>
+
+                            <% end %>
+                        <% end %>
+                  <% end %>
+            <% end %>
+      <% end %>
+    </tr>
+
+<!-- 第２班の午前午後の表示 -->
